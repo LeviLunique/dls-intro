@@ -20,11 +20,23 @@ namespace Abstraction.ConsoleApp
                 {
                     Console.Clear();
 
-                    int age = _random.Next(0, 15);
-                    IDog newDog = new Dog(age);
-                    newDog.Bark();
+                    Console.WriteLine("How old are you?");
+                    int adopterAge = Convert.ToInt32(Console.ReadLine());
+                    IAdopter newAdopter = new Adopter(adopterAge);
+                    newAdopter.AgeCriterion();
 
                     Console.ReadKey();
+
+                    if (willAdopt && newAdopter.pass == true)
+                    {
+                        Console.Clear();
+
+                        int age = _random.Next(0, 15);
+                        IDog newDog = new Dog(age);
+                        newDog.Bark();
+
+                        Console.ReadKey();
+                    }
                 }
 
                 Console.Clear();
